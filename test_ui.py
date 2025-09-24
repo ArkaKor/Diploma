@@ -3,7 +3,7 @@ from selenium import webdriver
 from UI.main_page import MainPage
 from UI.search_advanced_page import SearchAdvancedPage
 from UI.search_result_page import SearchResultPage
-from UI.tickets_page import Tickets_Page
+from UI.tickets_page import TicketsPage
 from UI.tv_page import TVPage
 import allure
 
@@ -14,7 +14,7 @@ def driver():
     Фикстура для инициализации и завершения работы драйвера.
     """
     driver = webdriver.Firefox()
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(20)
     driver.maximize_window()
     yield driver
     driver.quit()
@@ -76,7 +76,7 @@ def test_open_tickets_page(driver):
     main = MainPage(driver)
     main.open()
     main.tickets()
-    res = Tickets_Page(driver).get_title()
+    res = TicketsPage(driver).get_title()
     with allure.step("Проверка полученного результата"):
         assert res == 'Билеты в кино'
 
@@ -96,7 +96,7 @@ def test_open_tickets_buy(driver):
     main = MainPage(driver)
     main.open()
     main.tickets()
-    ticket = Tickets_Page(driver)
+    ticket = TicketsPage(driver)
     ticket.cinema_page()
     res = ticket.get_cinema_list()
     with allure.step("Проверка полученного результата"):

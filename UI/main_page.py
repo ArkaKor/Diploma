@@ -7,12 +7,12 @@ import allure
 class MainPage():
     def __init__(self, driver):
         """
-        Конструктор класса Form_Page.
+        Конструктор класса MainPage.
 
         :param driver: WebDriver — объект драйвера Selenium.
         """
         self.driver = driver
-        self.wait = WebDriverWait(driver, 5)
+        self.wait = WebDriverWait(driver, 20)
 
     @allure.step("Открытие главной страницы")
     def open(self):
@@ -22,7 +22,7 @@ class MainPage():
         self.driver.get('https://www.kinopoisk.ru/')
 
     @allure.step("Поиск через таб по названию '{find}'")
-    def tab_search(self, find):
+    def tab_search(self, find: str):
         """
         Выбирает таб для поиска.
         Заполняет таб указанным значением.
@@ -60,4 +60,3 @@ class MainPage():
         """
         self.driver.find_element(
             By.XPATH, "//span[text()='Телеканалы']").click()
-

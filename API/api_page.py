@@ -3,7 +3,7 @@ import allure
 
 my_headers = {
     'Content-Type': 'application/json',
-    'X-API-KEY': 'f96df5cc-eee9-4d41-aba6-f4c9d9d1130f'
+    'X-API-KEY': ''
     }
 
 

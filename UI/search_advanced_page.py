@@ -11,10 +11,10 @@ class SearchAdvancedPage():
         :param driver: WebDriver — объект драйвера Selenium.
         """
         self.driver = driver
-        self.wait = WebDriverWait(driver, 5)
+        self.wait = WebDriverWait(driver, 20)
 
     @allure.step("Поиск по названию '{find}'")
-    def search_film(self, find):
+    def search_film(self, find: str):
         """
         Заполняет форму поиска фильмов.
 

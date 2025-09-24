@@ -6,15 +6,15 @@ import allure
 class TVPage():
     def __init__(self, driver):
         """
-        Конструктор класса Form_Page.
+        Конструктор класса TVPage.
 
         :param driver: WebDriver — объект драйвера Selenium.
         """
         self.driver = driver
-        self.wait = WebDriverWait(driver, 5)
+        self.wait = WebDriverWait(driver, 20)
 
     @allure.step("Получение заголовка страницы")
-    def get_title(self):
+    def get_title(self) -> str:
         """
         Возвращает заголовок страницы "Телеканалы".
 

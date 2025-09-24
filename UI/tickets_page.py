@@ -1,20 +1,21 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.keys import Keys
 import allure
 
 
-class Tickets_Page():
+class TicketsPage():
     def __init__(self, driver):
         """
-        Конструктор класса Form_Page.
+        Конструктор класса TicketsPage.
 
         :param driver: WebDriver — объект драйвера Selenium.
         """
         self.driver = driver
-        self.wait = WebDriverWait(driver, 5)
+        self.wait = WebDriverWait(driver, 20)
 
     @allure.step("Получение заголовка страницы")
-    def get_title(self):
+    def get_title(self) -> str:
         """
         Возвращает заговок страницы "Билеты в кино".
 
@@ -29,13 +30,17 @@ class Tickets_Page():
         """
         Переходит на страницу выбора кинотеатра.
         """
-        self.driver.find_element(
-            By.CLASS_NAME,
-            'style_button__Awsrq.style_buttonSize24__GACpt'
-            ).click()
+        tab = self.driver.find_element(
+                By.CLASS_NAME, 'style_buttonAccent__Ha79h'
+                )
+        tab.send_keys(Keys.DOWN)
+        button = self.driver.find_element(
+                By.CLASS_NAME, 'styles_afishaButtonIcon__Nt5nr'
+                )
+        button.click()
 
     @allure.step("Полуение списка кинотеатров")
-    def get_cinema_list(self):
+    def get_cinema_list(self) -> list:
         """
         Возвращает список кинотатров, доступных для выбора.
 
